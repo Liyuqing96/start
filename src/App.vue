@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="less">
+   @import './style/common';
 </style>

@@ -2,7 +2,7 @@ import App from '../App'
 
 const home = r => require.ensure([], () => r(require('../page/home/home')), 'home')
 const about = r => require.ensure([], () => r(require('../page/about/about')), 'about')
-
+const login = r => require.ensure([], () => r(require('../page/login/login')), 'login')
 
 export default [{
     path: '/',
@@ -11,17 +11,22 @@ export default [{
         //地址为空时跳转home页面
         {
             path: '',
-            redirect: '/home'
+            redirect: '/home',
         },
         //首页城市列表页
         {
             path: '/home',
-            component: home
+            component: home,
         },
-        //当前选择about页
+        //当前选择login页
         {
             path: '/about',
             component: about
+        },
+        //当前选择login页
+        {
+            path: '/login',
+            component: login
         },
     ]
 }]

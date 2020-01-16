@@ -1,26 +1,30 @@
 <template>
-    <div class="head-wrapper">
-        <span>cookie</span>
-        <div></div>
+    <div class= "head-wrapper">
+        <div>{{ project }}</div>
+        <div>
+            <router-link to="/login" class="link">登录/注册</router-link>
+        </div>
     </div>
 </template>
 
 <script>
+
 export default {
     data(){
         return {
-            
+            project: 'project'
         }
     },
-    components: {
-       
-    }
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+
+@import '../../style/mixin';
+
 .head-wrapper {
     display: flex;
+    justify-content: space-between;
     position: fixed;
     top: 0;
     left: 0;
@@ -29,6 +33,11 @@ export default {
     height: 20px;
     line-height: 20px;
     padding: 10px;
-    background: #eee;
+    background: @primaryColor;
+    color: #FFFFFF;
+    .link {
+        color: #FFFFFF;
+        text-decoration: unset;
+    }
 }
 </style>
