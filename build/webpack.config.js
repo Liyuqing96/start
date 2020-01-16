@@ -20,9 +20,9 @@ module.exports = {
                 test:/\.js$/,
                 use:{
                   loader:'babel-loader',
-                  options:{
-                    presets:['@babel/preset-env']
-                  }
+                //   options:{
+                //     presets:['@babel/preset-env']
+                //   }
                 },
                 exclude:/node_modules/
             },
@@ -121,7 +121,7 @@ module.exports = {
             'vue$': 'vue/dist/vue.runtime.esm.js',
             '@': path.resolve(__dirname, '../src')
         },
-        extensions:['*','.js','.json','.vue']
+        extensions:['*','.js','.json','.vue','.less', '.css', '.scss']
     },
     plugins:[
         new CleanWebpackPlugin(),
