@@ -12,8 +12,8 @@ let routerMode = 'hash';
 let imgBaseUrl = '';
 
 if (process.env.NODE_ENV == 'development') {
-	baseUrl = '//elm.cangdu.org';
-	imgBaseUrl = '//elm.cangdu.org/img/';
+	// baseUrl = '//elm.cangdu.org';
+	// imgBaseUrl = '//elm.cangdu.org/img/';
     // imgBaseUrl = '/img/';
 
 }else if(process.env.NODE_ENV == 'production'){
