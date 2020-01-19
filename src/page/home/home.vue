@@ -13,7 +13,12 @@
         </div>
         <!-- 热门城市 -->
         <div class="hot-city">
-            <p v-for="item in hotCity" :key="item.id">{{ item.name }}</p>
+            <p>热门城市</p>
+            <div class="hot-wrap">
+                <p v-for="item in hotCity" :key="item.id" class="hot-item">
+                    <span>{{ item.name }}</span>
+                </p>
+            </div>
         </div>
         <!-- 所有城市 -->
         <div class="all-city">
@@ -65,27 +70,39 @@ export default {
 <style lang="less" scoped>
 @import '../../style/mixin';
 .home-wrapper {
-    padding-top: 40px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 3.34rem;
     .guess-city {
         .curr-city {
             display: flex;
             justify-content: space-between;
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
         }
     }
     .hot-city {
-       display: flex; 
-       flex-flow: row wrap;
-       p {
-           flex:0 0 25%;
-           text-align: center;
-           &:nth-of-type(4n + 1) {
-               text-align: left;
-           };
-           &:nth-of-type(4n) {
-               text-align: right;
-           };
+        & > p {
+            padding: 0.5rem 1rem;
+            font-size: 1.2rem;
+        }
+       .hot-wrap {
+           border-top: 0.08rem solid #ccc;
+           display: flex; 
+           flex-flow: row wrap;
+           .hot-item {
+            flex: 0 0 25%;
+            text-align: center;
+                &:nth-of-type(4n){
+                    span {
+                        border-right: none;
+                    }
+                }
+                span {
+                    display: block;
+                    padding: 0.66rem 0;
+                    border-right: 0.08rem solid #ccc;
+                    border-bottom: 0.08rem solid #ccc;
+                }
+            }
        }
     }
 }
