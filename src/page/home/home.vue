@@ -13,7 +13,7 @@
         </div>
         <!-- 热门城市 -->
         <div class="hot-city">
-            <p>热门城市</p>
+            <p class="title">热门城市</p>
             <div class="hot-wrap">
                 <p v-for="item in hotCity" :key="item.id" class="hot-item">
                     <span>{{ item.name }}</span>
@@ -22,12 +22,19 @@
         </div>
         <!-- 所有城市 -->
         <div class="all-city">
-            <p v-for="item in allCity" :key="item.id">{{ item.name }}</p>
+            <div v-for="(value, key, index) in sortgroupcity" :key="key">
+                <p class="title">{{ key }}<span v-if="index === 0">(按字母顺序)</span></p>
+                <div class="all-wrap">
+                    <p v-for="item in value" :key="item.id" class="all-item">
+                        <span>{{ item.name }}</span>
+                    </p> 
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
-<script lang="">
+<script>
 import headers from '../../components/head/headers';
 import { guessCity, hotCity, allCity } from '../../service/getData'
 
@@ -44,7 +51,6 @@ export default {
         }
     },
     mounted(){
-
         //获取当前城市
         guessCity().then(res => {
             this.guessCity = res.name;
@@ -53,16 +59,26 @@ export default {
 
         //获取热门城市
         hotCity().then(res => {
-            console.log("hotCity:::",res)
             this.hotCity = res;
         })
 
         //获取所有城市
         allCity().then(res => {
-            console.log("allCity::",res)
             this.allCity = res;
+            console.log(res)
         })
-
+    },
+    computed: {
+        //将获取的数据按照A-Z字母开头排序
+        sortgroupcity(){
+            let sortobj = {};
+            for (let i = 65; i <= 90; i++) {
+                if (this.allCity[String.fromCharCode(i)]) {
+                    sortobj[String.fromCharCode(i)] = this.allCity[String.fromCharCode(i)];
+                }
+            }
+            return sortobj
+        }      
     },
 }
 </script>
@@ -79,18 +95,21 @@ export default {
             font-size: 1.2rem;
         }
     }
-    .hot-city {
-        & > p {
+    .hot-city,.all-city {
+        .title {
             padding: 0.5rem 1rem;
             font-size: 1.2rem;
+            border-bottom: 0.08rem solid #ccc;
         }
-       .hot-wrap {
-           border-top: 0.08rem solid #ccc;
+       .hot-wrap,.all-wrap {
            display: flex; 
            flex-flow: row wrap;
-           .hot-item {
+           .hot-item,.all-item {
             flex: 0 0 25%;
             text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
                 &:nth-of-type(4n){
                     span {
                         border-right: none;
@@ -98,9 +117,12 @@ export default {
                 }
                 span {
                     display: block;
-                    padding: 0.66rem 0;
+                    padding: 0.66rem  0.5rem;
                     border-right: 0.08rem solid #ccc;
                     border-bottom: 0.08rem solid #ccc;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                 }
             }
        }
