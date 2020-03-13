@@ -1,6 +1,6 @@
 <template>
     <div class= "head-wrapper">
-        <div>{{ project }}</div>
+        <div>{{ themeName }}</div>
         <div>
             <router-link to="/login" class="link">登录/注册</router-link>
         </div>
@@ -8,18 +8,22 @@
 </template>
 
 <script>
+import { theme } from '../../global/theme'
 
 export default {
     data(){
         return {
-            project: 'project'
+            themeName : theme.themeName,
         }
+    },
+    computed: {
+        theme,
     },
     methods: {
        
     },
     mounted(){
-       
+       console.log(theme.themeName)
     }
 }
 </script>
