@@ -15,6 +15,12 @@ export default {
             project: 'project'
         }
     },
+    methods: {
+       
+    },
+    mounted(){
+       
+    }
 }
 </script>
 

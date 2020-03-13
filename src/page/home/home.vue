@@ -8,7 +8,7 @@
                 <span>定位不准时，请在城市列表中选择</span>
             </div>
             <div class="curr-city">
-                <router-link to="/about">{{ guessCity }}</router-link>
+                <router-link to="/login">{{ guessCity }}</router-link>
             </div>
         </div>
         <!-- 热门城市 -->
@@ -36,7 +36,8 @@
 
 <script>
 import headers from '../../components/head/headers';
-import { guessCity, hotCity, allCity } from '../../service/getData'
+import { guessCity, hotCity, allCity } from '../../service/getData';
+import { mapState } from 'vuex';
 
 export default {
     components: {
@@ -65,10 +66,10 @@ export default {
         //获取所有城市
         allCity().then(res => {
             this.allCity = res;
-            console.log(res)
         })
     },
     computed: {
+        //  ...mapState([ 'name', 'age']),
         //将获取的数据按照A-Z字母开头排序
         sortgroupcity(){
             let sortobj = {};
@@ -78,8 +79,11 @@ export default {
                 }
             }
             return sortobj
-        }      
+        },  
     },
+    methods: {
+        
+    }
 }
 </script>
 
