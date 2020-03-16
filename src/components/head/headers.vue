@@ -1,29 +1,37 @@
 <template>
-    <div class= "head-wrapper">
-        <div>{{ themeName }}</div>
-        <div>
+    <header class= "head-wrapper">
+        <slot name="theme"></slot>
+        <div v-if= "goback" @click = "$router.go(-1)"> < </div>
+        <div v-if="user">
+            <router-link to="/profile" class="link">已登录</router-link>
+        </div>
+        <div v-else>
             <router-link to="/login" class="link">登录/注册</router-link>
         </div>
-    </div>
+    </header>
 </template>
 
 <script>
-import { theme } from '../../global/theme'
-
+import { mapState } from 'vuex'
 export default {
+    props:{
+        goback: false,
+    },
     data(){
-        return {
-            themeName : theme.themeName,
+        return {         
         }
     },
+    created(){
+
+    },
     computed: {
-        theme,
+        ...mapState([ 'user' ])
     },
     methods: {
        
     },
     mounted(){
-       console.log(theme.themeName)
+       
     }
 }
 </script>

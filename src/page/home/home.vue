@@ -1,6 +1,8 @@
 <template>
     <div class='home-wrapper'>
-        <headers></headers>
+        <headers>
+            <span slot="theme">{{ themeName }}</span>
+        </headers>
         <!-- 当前城市 -->
         <div class="guess-city">
             <div class="curr-city">
@@ -38,6 +40,7 @@
 import headers from '../../components/head/headers';
 import { guessCity, hotCity, allCity } from '../../service/getData';
 import { mapState } from 'vuex';
+import { theme } from '../../global/theme'
 
 export default {
     components: {
@@ -45,6 +48,7 @@ export default {
     },
     data(){
         return {
+            themeName : theme.themeName,
             guessCity: '',
             guessCityid: '',
             hotCity: [],
@@ -52,10 +56,10 @@ export default {
         }
     },
     mounted(){
-        //获取当前城市
+        //获取当前城市(axios获取)
         guessCity().then(res => {
-            this.guessCity = res.name;
-            this.guessCityid = res.id;
+            this.guessCity = res.data.name;
+            this.guessCityid = res.data.id;
         })
 
         //获取热门城市

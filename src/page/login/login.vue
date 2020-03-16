@@ -1,10 +1,10 @@
 <template>
-    <div>
-        <h3>{{initData}}</h3>
-    </div>
+    <headers :goback = 'true'>
+    </headers>
 </template>
 
 <script>
+import headers from '../../components/head/headers'
 import { mapState } from 'vuex'
 export default {
     data(){
@@ -14,6 +14,9 @@ export default {
     },
     computed: {
         // ...mapState(['name', 'age'])
+    },
+    components: {
+        headers,
     }
 }
 </script>

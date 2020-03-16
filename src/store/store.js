@@ -6,6 +6,7 @@ export default new Vuex.Store({
     state: {
         name : 'liyuqing',
         age : '24',
+        user: null,
     },
     getters: {
 
