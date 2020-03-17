@@ -3,6 +3,9 @@ import VueRouter from 'vue-router'
 import store from './store/store'
 import routes from './router/router'
 import App from './App'
+import Cube from 'cube-ui'
+
+Vue.use(Cube)
 
 Vue.use(VueRouter)
 

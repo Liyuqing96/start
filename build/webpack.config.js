@@ -119,7 +119,8 @@ module.exports = {
     resolve: {
         alias: {
             'vue$': 'vue/dist/vue.runtime.esm.js',
-            '@': path.resolve(__dirname, '../src')
+            '@': path.resolve(__dirname, '../src'),
+            'cube-ui': 'cube-ui/lib'
         },
         extensions:['*','.js','.json','.vue','.less', '.css', '.scss']
     },

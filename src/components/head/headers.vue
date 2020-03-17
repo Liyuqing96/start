@@ -1,34 +1,44 @@
 <template>
     <header class= "head-wrapper">
         <slot name="theme"></slot>
-        <div v-if= "goback" @click = "$router.go(-1)"> < </div>
-        <div v-if="user">
-            <router-link to="/profile" class="link">已登录</router-link>
-        </div>
-        <div v-else>
-            <router-link to="/login" class="link">登录/注册</router-link>
-        </div>
+        <div v-if= "goback" @click = "$router.go(-1)">《 </div>
+        <template v-if="headerName">
+            <span>{{headerName}}</span>
+        </template>
+        <template v-else>
+            <div v-if="userInfo">
+                <router-link to="/profile" class="link">已登录</router-link>
+            </div>
+            <div v-else>
+                <router-link to="/login" class="link">登录/注册</router-link>
+            </div>
+        </template>
     </header>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+
 export default {
     props:{
         goback: false,
+        login: false,
     },
     data(){
         return {         
         }
     },
     created(){
-
+        this.getUserInfo();
     },
     computed: {
-        ...mapState([ 'user' ])
+        ...mapState([ 'userInfo' ]),
+        headerName(){
+            if (this.login) return this.login;
+        }
     },
     methods: {
-       
+        ...mapActions(["getUserInfo"])
     },
     mounted(){
        
