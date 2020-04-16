@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="about">
         <h1>{{initData}}</h1>
     </div>
 </template>

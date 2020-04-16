@@ -3,6 +3,7 @@
         <headers>
             <span slot="theme">{{ themeName }}</span>
         </headers>
+        <h2>{{name}}</h2>
         <!-- 当前城市 -->
         <div class="guess-city">
             <div class="curr-city">
