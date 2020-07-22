@@ -1,4 +1,5 @@
 let state = {
-    userInfo: null,
+  userInfo: null,
+  name: ''
 }
-export default state;
+export default state
